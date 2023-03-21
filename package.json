@@ -1,0 +1,29 @@
+{
+  "name": "gmenu2x-aliasfile-generator",
+  "version": "1.0.0",
+  "description": "Generates a gmenu2x aliasfile from a directory of files",
+  "main": "src/index.mjs",
+  "module": true,
+  "scripts": {
+    "start": "node src/index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshtronic/gmenu2x-aliasfile-generator.git"
+  },
+  "author": "Josh Sherman <hello@joshtronic.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshtronic/gmenu2x-aliasfile-generator/issues"
+  },
+  "homepage": "https://github.com/joshtronic/gmenu2x-aliasfile-generator#readme",
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "mkdirp": "^2.1.5"
+  }
+}
