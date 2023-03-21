@@ -10,11 +10,11 @@ const { directory } = program.opts();
 const files = await fs.readdir(directory);
 
 files.forEach((file) => {
-  let alias = file.slice(0, file.lastIndexOf('.'));
+  const variable = file.slice(0, file.lastIndexOf('.'));
 
   // Awesome gist that inspired most of the following:
   // https://gist.github.com/ramiabraham/ff41ba74f2b7104ecece
-  alias = alias
+  const value = variable
     // Removes primary ROM codes
     .replace(/\[(a|p|b|f|T-|T+|t|h|o|J|!)\]/gi, '')
     .replace(/\((-|M\d+|U|E|UE)\)/gi, '')
@@ -31,5 +31,5 @@ files.forEach((file) => {
     // Removes Nintendo Entertainment System specific codes
     .replace(/\[(PC10|VS)\]/gi, '');
 
-  console.log(`${file}=${alias}`);
+  console.log(`${variable}=${value}`);
 });
