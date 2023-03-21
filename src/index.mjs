@@ -14,7 +14,7 @@ files.forEach((file) => {
 
   // Awesome gist that inspired most of the following:
   // https://gist.github.com/ramiabraham/ff41ba74f2b7104ecece
-  const value = variable
+  let value = variable
     // Removes primary ROM codes
     .replace(/\[(a|p|b|f|T-|T+|t|h|o|J|!)\]/gi, '')
     .replace(/\((-|M\d+|U|E|UE)\)/gi, '')
@@ -30,6 +30,18 @@ files.forEach((file) => {
     .replace(/\[ (\(B\) Brazil|\[c\] Checksum|\[x\] Bad Checksum|\[R-\] Countries) \]/gi, '')
     // Removes Nintendo Entertainment System specific codes
     .replace(/\[(PC10|VS)\]/gi, '');
+
+  // Replaces suffixes with prefixes
+  // TODO: Needs to check if the suffix is at the end of the string or has a
+  // space after it, otherwise games like "Pong, Asteroids & Yars' Revenge"
+  // will be renamed to "A Pongsteroids & Yars' Revenge"
+  ['A', 'The'].forEach((prefix) => {
+    const suffix = `, ${prefix}`;
+
+    if (value.includes(suffix)) {
+      value = `${prefix} ${value.replace(suffix, '')}`;
+    }
+  });
 
   console.log(`${variable}=${value}`);
 });
